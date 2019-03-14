@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { TriangleService } from '../triangle.service'
+import { TriangleService } from '../triangle.service';
 
 @Component({
   selector: 'floyd',
@@ -9,7 +9,7 @@ import { TriangleService } from '../triangle.service'
   <button (click)="onClick(rows.value, checkbox.checked)">CLICK</button>
   </p>
   <pre AngularPre [highlightColor]="color">
-  {{floydString | paragraph:'¶' | replaceAll: {from:'¶', to:'¶ piped'} }} 
+  {{floydString | paragraph:'¶' | replaceAll: {from:'¶', to:'¶ piped'} }}
   </pre>
   `,
   styleUrls: ['./floyd.component.css'],
@@ -18,23 +18,20 @@ import { TriangleService } from '../triangle.service'
 })
 export class FloydComponent implements OnInit {
 
-  private floydString:string = "";
   private static startOfAlphabet = 97;
-  private color: "yellow" | "red";
+  private color: 'yellow' | 'red';
 
-  constructor(private triangleService:TriangleService) { }
+  constructor(private triangleService: TriangleService) { }
 
   ngOnInit() {
   }
 
-  onClick(rows:number, checked:boolean){
+  onClick(rows: number, checked: boolean){
 
-    if(checked){
-      this.floydString = this.triangleService.evenFloydTriangle(rows);
-      this.color = "red";
+    if (checked){
+      this.color = 'red';
     }else{
-      this.floydString = this.triangleService.floydTriangle(rows);
-      this.color = "yellow";
+      this.color = 'yellow';
     }
   }
 }
